@@ -8,3 +8,11 @@
 지영님은 HEAD:jjyeong 의 브런치에 업로드해주시면 됩니다.
 유미님은 HEAD:Yumi-Koh 의 브런치에 업로드해주시면 됩니다.
 예림님은 HEAD:ohRyungyi 의 브런치에 업로드해주시면 됩니다.
+
+## 👩‍💻 Python Study
+
+날짜|알고리즘|문제|파트장
+---|---|---|---
+21.06.29~21.07.03|1. 코드업 100제|[코드업](https://codeup.kr/problemsetsol.php?psid=33)|-
+21.07.04~21.07.08|2. 스택|[백준](https://www.acmicpc.net/step/11)<br>[프로그래머스](https://programmers.co.kr/learn/courses/30/parts/12081)|고유미
+
