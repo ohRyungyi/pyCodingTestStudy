@@ -65,9 +65,22 @@ def solution(phone_book):
 </div>
 </details>
 
+<details>
+<summary>위장</summary>
+<div markdown="1">
+
+</div>
+</details>
+
 <br>
 
 ### 백준 단계별
+<details>
+<summary>1920(수 찾기)</summary>
+<div markdown="1">
+
+</div>
+</details>
 
 <br>
 
