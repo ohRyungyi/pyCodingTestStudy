@@ -88,20 +88,169 @@ def solution(phone_book):
 <details>
 <summary>1620(나는야 포켓몬 마스터 이다솜)</summary>
 <div markdown="1">
+<br>
+    
+``` python
+import sys
 
+# n: 도감에 등록된 포켓몬 개수
+# m: 맞춰야 하는 문제 개수
+n, m = map(int, sys.stdin.readline().split())
+
+pocketmons_keyname = {}
+pocketmons_keynum = {}
+
+# 도감에 포켓몬 등록하기
+for i in range(n):
+    pocketmon = sys.stdin.readline().rstrip()  # 입력된 포켓몬
+    pocketmons_keyname[pocketmon] = i+1
+    pocketmons_keynum[i+1] = pocketmon
+
+# 문제 맞추기
+for j in range(m):
+    question = sys.stdin.readline().rstrip()  # 포켓몬 맞추는 문제
+
+    # 도감에서 포켓몬 불러오기
+    if question.isnumeric() == True:
+        print(pocketmons_keynum.get(int(question)))
+    else:
+        print(pocketmons_keyname.get(question))    
+```    
+
+- 💡 아이디어
+    <br> 포켓몬 이름을 이용하여 몇 번째 포켓몬인지 검색할 수도 있어야하고, 등록된 순서를 이용하여 무슨 포켓몬인지 검색할 수도 있어야한다. 따라서 딕셔너리를 총 두개 만들었다. 
+    <br>(1: poketmons_keyname) key:포켓몬 이름, value:등록 순서 (2: pocketmons_keynum) key:등록 순서, value: 포켓몬 이름
+    <br> isnumeric() 함수를 사용해서 문제가 숫자라면 pocketmons_keynum 딕셔너리를 이용하여 검색하였고, 숫자가 아니라면 pocketmons_keyname을 사용해 검색하도록 하였다.
+<br>
+    
+- 📚 후기
+    <br> 해시를 알면 굉장히 쉬운 문제지만, 해시를 몰랐다면 리스트를 이용하여 풀려고 시도했을 것 같다. 
+    <br>시간제한이 없다면 리스트를 이용해도 문제가 풀릴 것 같다. 하지만 해시가 훨씬 빠르므로 해시를 이용하도록 하자.
+<br>
+    
+- ✏️ 배운점
+    - S.isnumeric() : S(문자열)가 숫자로 구성되어있는지 확인하는 함수 (cf: isalpha(), isalnum())
+<br>
+    
 </div>
 </details>
 
 <details>
 <summary>17264(I AM IRONMAN)</summary>
 <div markdown="1">
+<br>
+    
+``` python
+import sys
 
+# n: 총 게임 횟수
+# p: 해킹을 통해 얻은 플레이어 정보의 수
+n, p = map(int, sys.stdin.readline().split())
+
+# w: 이긴 경우 획득 점수
+# l: 졌을 때 떨어지는 점수
+# g: IRON 티어 벗어나기 위한 점수
+w, l, g = map(int, sys.stdin.readline().split())
+
+# 해킹한 선수, 이기는지(W) or 지는지(L) 딕셔너리에 받기
+hacked_player = {}
+for i in range(p):
+    name, t = sys.stdin.readline().split()
+    hacked_player[name] = t
+
+# 같이 게임하는 플레이어 이름 받아서 점수 계산하기
+point = 0
+for j in range(n):
+    name = sys.stdin.readline().rstrip()
+
+    if hacked_player.get(name) == 'W':  # 해킹을 해서 무조건 이길 수 있는 확률
+        point += w
+    else:  # 해킹을 했는데 지는 선수이거나, 해킹 정보가 없는 선수
+        point -= l
+        if point < 0:  # 점수는 절대 0점 밑으로 떨어지지 않음
+            point = 0
+
+    if point >= g:  # 점수가 IRON 티어 벗어나기 위한 점수를 넘겼을 때
+        print("I AM NOT IRONMAN!!")
+        quit()  # 프로그램 종료
+
+print("I AM IRONMAN!!")
+```
+    
+
+- 💡 아이디어
+    <br> 해킹한 플레이어를 딕셔너리에 받아 이름을 key로 저장하고, 졌는지('L') 이겼는지('W')를 value로 저장하였다.
+    <br> n번의 게임횟수 동안 플레이어의 이름이 딕셔너리에 있는지 검사하면서 이겼다면 포인트를 얻고, 지거나 딕셔너리에 없다면 포인트를 잃도록 설정하였다.
+<br>
+    
+- 📚 후기
+    <br> w, l로 획득 점수와 잃는 점수 변수를 설정해놓고 예제의 점수로 획득하고 잃도록 계속 코드를 짰다.
+    <br> 따라서 예제로는 정답인데 백준에서는 틀렸다고 뜨는 어이없는 실수를 했다.
+<br>
+    
+- ✏️ 배운점
+    - quit(): 파이썬 프로그램 종료. (c언어에서 return 0과 비슷)
+<br>
+    
 </div>
 </details>
 
 <details>
 <summary>3077(임진왜란)</summary>
 <div markdown="1">
+<br>
+    
+``` python
+import sys
+import itertools  # 조합
+
+# n: 해전의 개수
+n = int(sys.stdin.readline())
+
+# 해전 순서의 정답
+wars_correct = dict(zip(sys.stdin.readline().split(), [i for i in range(n)]))
+
+# 학생의 답안
+wars_answer = sys.stdin.readline().split()
+
+# 학생의 답안 중 N(N-1)/2개의 쌍 고름
+pick = list(itertools.combinations(wars_answer, 2))
+''' >>> 출력: [('sacheon', 'hansan'), ('sacheon', 'myeongnyang'), ('sacheon', 'noryang'), ('sacheon', 'okpo'), ('hansan', 'myeongnyang'),
+ ('hansan', 'noryang'), ('hansan', 'okpo'), ('myeongnyang', 'noryang'), ('myeongnyang', 'okpo'), ('noryang', 'okpo')]
+'''
+point = 0  # 학생의 점수
+# N(N-1)/2개의 쌍 중에서 해전이 일어난 연도의 순서를 맞게 적었다면 +1점
+for p in pick:
+    if wars_correct.get(p[0]) < wars_correct.get(p[1]):
+        point += 1
+
+# 학생 점수/총 점수
+print("%d/%d" % (point, n*(n-1)/2)) 
+```                                                    
+
+- 💡 아이디어
+    <br> 해전이 일어난 순서대로 정답이 받아지므로, 해전 이름을 key, 순서를 value로 하여 딕셔너리로 받았다.
+    <br> 학생의 답안 중 N(N-1)/2개의 쌍을 전부 검사하여 순서가 맞았는지 틀렸는지 검사하므로 이를 itertools.combination을 이용하여 조합을 만들었다.
+    <br> 만든 조합을 for문을 사용하여 검사하며, 맞았을 시 point를 +1하였다.
+<br>
+    
+- 📚 후기
+    <br> 시간제한이 1초길래 정말 모든 경우의 수를 찾는 게 맞나? 라는 생각을 했는데 그게 맞았다.
+    <br> 해시를 이용해 최대한 시간을 줄이는 것이 관건이었던 것 같다.
+<br>
+    
+- ✏️ 배운점
+    - dict(zip(list1, list2)): list 두 개를 이용하여 딕셔너리로 만듦. list1은 key, list2는 value가 됨.
+    - itertools: 경우의 수를 찾을 때 사용되는 라이브러리 (import itertools)
+        - itertools.permutations: 순서는 중요하고 중복은 허용되지 않음. 
+          <br>ex) itertools.permutations([1, 2, 3], 2) => [(1,2), (1,3), (2,1), (2,3), (3,1), (3,2)]
+        - itertools.product: 순서는 중요하고 중복은 허용됨.
+          <br>ex) itertools.product([1, 2, 3], 2) => [(1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)]
+        - itertools.combinations: 순서는 중요하지 않고 중복은 허용되지 않음.
+          <br>ex) itertools.combinations([1, 2, 3], 2) => [(1,2), (1,3), (2,3)]
+        - itertools.combinations_with_replacement: 순서는 중요하지 않고 중복은 허용됨.
+          <br>ex) itertools.combinations_with_replacement([1, 2, 3], 2) => [(1,1), (1,2), (1,3), (2,2), (2,3), (3,3)]
+<br>
 
 </div>
 </details>
