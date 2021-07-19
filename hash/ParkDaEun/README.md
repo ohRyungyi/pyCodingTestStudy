@@ -85,3 +85,23 @@ def solution(phone_book):
 <br>
 
 ### 백준 개별문제
+<details>
+<summary>1620(나는야 포켓몬 마스터 이다솜)</summary>
+<div markdown="1">
+
+</div>
+</details>
+
+<details>
+<summary>17264(I AM IRONMAN)</summary>
+<div markdown="1">
+
+</div>
+</details>
+
+<details>
+<summary>3077(임진왜란)</summary>
+<div markdown="1">
+
+</div>
+</details>
