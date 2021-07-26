@@ -1,5 +1,5 @@
 ## 정렬 문제 업로드하는 repository
-완료시 ✅  이모티코 사용해서 채우기
+완료시 ✅  이모티콘 사용해서 채우기
 사이트|문제 이름(문제 번호)|jjyeong|ohRyungyi|ParkDaEun|Yumi-Koh
 ---|---|---|---|---|---
 백준|[수 정렬하기1(2750)](https://www.acmicpc.net/problem/2750)| ✅  |  |  | 
