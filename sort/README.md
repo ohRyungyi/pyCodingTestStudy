@@ -14,4 +14,4 @@
 백준|[좌표 압축(18870)](https://www.acmicpc.net/problem/18870)| ✅ |  |  | 
 프로그래머스|[K번째 수](https://programmers.co.kr/learn/courses/30/lessons/42748)| ✅ | ✅ |  | 
 프로그래머스|[가장 큰 수](https://programmers.co.kr/learn/courses/30/lessons/42746)|  | ✅ |  | 
-프로그래머스|[H-Index](https://programmers.co.kr/learn/courses/30/lessons/42747)|  | ✅ |  | 
+프로그래머스|[H-Index](https://programmers.co.kr/learn/courses/30/lessons/42747)| ✅| ✅ |  | 
