@@ -3,41 +3,55 @@ from collections import Counter
 
 N = int(sys.stdin.readline())
 
-int_list = [int(sys.stdin.readline()) for _ in range(N) ]
 int_dict = dict()
+int_list = list()
+# int_list = [int(sys.stdin.readline()) for _ in range(N)]
 
-for _ in range(N):
-    data = int(sys.stdin.readline().strip())
+for i in range(N):
+    data = int(sys.stdin.readline())
     int_list.append(data)
-    if data not in int_dict:
+    if data not in int_dict.keys():
         int_dict[data] = 1
     else:
-        int_dict[data]+=1
+        int_dict[data] += 1
 
 int_list.sort()
-int_dict_list = sorted(int_dict.items(), key = lambda x : x[1])
 
-print(int_dict_list)
+# print(sorted(set(int_list)))
 
-print(int(round(sum(int_list)/N, 0)))
+# int_dict = { i:int_list.count(i) for i in sorted(set(int_list))}
+int_dict = sorted(int_dict.items(), key = lambda x: (x[1], -x[0]), reverse=True)
+
+# print(int_dict)
+
+print(round(sum(int_list)/N))
 print(int_list[N//2])
 
 
+if len(int_dict) > 1 and int_dict[0][1] == int_dict[1][1]:
+    print(int_dict[1][0])
+else:
+    print(int_dict[0][0])
 
-# common = Counter(int_list).most_common(2);
+print(int_list[-1]-int_list[0])
 
-# if len(common) == 1:
-#     print(common[0][0])
-# elif len(common) == 2:
-#     if common[1][0] > common[0][0]:
-#         print(commmon[0][0])
-#     else:
-#         print(common[1][0])
+# print(round(sum(int_list)/N))
+
+# int_list.sort()
+
+# print(int_list[N//2])
+
+# int_dict = {  i:int_list.count(i) for i in set(int_list)}
+# int_dict = sorted(int_dict.items(), key = lambda x : (-x[1], x[0]))
 
 
+# if len(int_dict)>1 and int_dict[0][1] == int_dict[1][1]:
+#     print(int_dict[1][0])
+# else:
+#     print(int_dict[0][0])
+# # if len(int_dict) > 1 and int_dict[0][1] == int_dict[1][1]:
 
-print(max(int_list)-min(int_list))
-
+# print(int_list[-1]-int_list[0])
 
 
 '''
