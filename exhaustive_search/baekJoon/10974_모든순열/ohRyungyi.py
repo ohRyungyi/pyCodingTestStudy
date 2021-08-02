@@ -20,8 +20,6 @@ result.sort()
 for i in result:
     print(i)
 
-# print(sorted([2, 1]))
-
 
 '''
 입력
