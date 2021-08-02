@@ -1,0 +1,1 @@
+[모든 순열(10974)](https://www.acmicpc.net/problem/10974)
