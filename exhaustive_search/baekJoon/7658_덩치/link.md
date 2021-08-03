@@ -1,1 +1,0 @@
-[덩치(7658)](https://www.acmicpc.net/problem/7658)
