@@ -5,7 +5,7 @@ n, m = map(int, sys.stdin.readline().split())
 cards = list(map(int, sys.stdin.readline().split()))
 
 three_cards = list(combinations(cards, 3))
-print(three_cards)
+#print(three_cards)
 
 ans = 0
 for c in three_cards:
