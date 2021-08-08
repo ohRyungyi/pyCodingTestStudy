@@ -1,14 +1,16 @@
 import sys 
 from itertools import permutations, combinations
 
-N = int(sys.stdin.readline()) 
-team_num = list(range(N))
+N = int(sys.stdin.readline()) #4
+team_num = list(range(N)) #[0,1,2,3]
 score_set = []
 for _ in range(N):
     score_set.append(list(map(int, sys.stdin.readline().split())))
+print(score_set)
 
 # 먼저 팀 조합을 구해야함. 
 min_deduct_val = 999999999
+print(list(combinations(team_num, int(N/2))))
 for one_combi in combinations(team_num, int(N/2)):
     
     team_copy = team_num.copy()
@@ -42,3 +44,29 @@ for one_combi in combinations(team_num, int(N/2)):
     #print(f"min_deduct_val : {min_deduct_val}")
 
 print(min_deduct_val)
+
+'''
+4
+0 1 2 3
+4 0 5 6
+7 1 0 2
+3 4 5 0
+'''
+
+'''
+0
+'''
+
+'''
+6
+0 1 2 3 4 5
+1 0 2 3 4 5
+1 2 0 3 4 5
+1 2 3 0 4 5
+1 2 3 4 0 5
+1 2 3 4 5 0
+'''
+
+'''
+2
+'''
