@@ -1,9 +1,11 @@
-# 첫번째풀이 ## sorted(li)<-★제일빨랐음 / li.sort()
+# 첫번째풀이 ## sorted(li)/ li.sort()
 import sys
 
 li = [int(sys.stdin.readline()) for _ in range(9)]
 from itertools import combinations
 for com in combinations(li,2):
+    #print(com)
+    #print(sum(li) - sum(com))
     if sum(li) - sum(com) == 100:
         li.remove(com[0])
         li.remove(com[1])
@@ -27,3 +29,25 @@ print(*sorted(li), sep='\n')
 # com = list(com)
 # com.sort()
 # print(*com, sep='\n')
+
+'''
+20
+7
+23
+19
+10
+15
+25
+8
+13
+'''
+
+'''
+7
+8
+10
+13
+19
+20
+23
+'''
