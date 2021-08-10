@@ -10,6 +10,7 @@ def solution(brown, yellow):
                     answer = [i + 2, j + 2]
                 else:
                     answer = [j + 2, i + 2]
+                break
 
     return answer
 
