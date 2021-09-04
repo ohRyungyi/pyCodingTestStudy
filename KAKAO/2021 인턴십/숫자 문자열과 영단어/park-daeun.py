@@ -1,30 +1,29 @@
 def solution(s):
-    print(s.count("one"))
-    if s.count("zero") > 0:
-        s.replace("zero", "0")
+    if "zero" in s:
+        s = s.replace("zero", "0")
     if "one" in s:
-        s.replace("one", "1")
-    if s.count("two") > 0:
-        s.replace("two", "2")
-    if s.count("three") > 0:
-        s.replace("three", "3")
-    if s.count("four") > 0:
-        s.replace("four", "4")
-    if s.count("five") > 0:
-        s.replace("five", "5")
-    if s.count("six") > 0:
-        s.replace("six", "6")
-    if s.count("seven") > 0:
-        s.replace("seven", "7")
-    if s.count("eight") > 0:
-        s.replace("eight", "8")
-    if s.count("nine") > 0:
-        s.replace("nine", "9")
+        s = s.replace("one", "1")
+    if "two" in s:
+        s = s.replace("two", "2")
+    if "three" in s:
+        s = s.replace("three", "3")
+    if "four" in s:
+        s = s.replace("four", "4")
+    if "five" in s:
+        s = s.replace("five", "5")
+    if "six" in s:
+        s = s.replace("six", "6")
+    if "seven" in s:
+        s = s.replace("seven", "7")
+    if "eight" in s:
+        s = s.replace("eight", "8")
+    if "nine" in s:
+        s = s.replace("nine", "9")
 
     return int(s)
 
 s = "one4seveneight"
-solution(s)
+print(solution(s))
 
 '''
 입력 예시
