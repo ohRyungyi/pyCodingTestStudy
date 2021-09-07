@@ -35,6 +35,7 @@ def solution(n, s, a, b, fares):
         dist = dijkstra(i, distance, graph)
         total.append(dist)
         distance = [INF] * (n+1)
+    print(total)
 
     ans = INF
     for i in range(1, n+1):
